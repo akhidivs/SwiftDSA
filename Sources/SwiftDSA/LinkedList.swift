@@ -22,7 +22,7 @@ public final class LinkedList<T: Equatable> {
   
     public var head: Node<T>?
   
-    public init(head: Node<T>) {
+    public init(head: Node<T>?) {
         self.head = head
     }
     
