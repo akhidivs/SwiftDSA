@@ -64,7 +64,7 @@ import Foundation
  
  */
 
-public class PriorityQueue<Element> {
+public final class PriorityQueue<Element> {
     
     var elements: [Element]
     let priorityFunction: (Element, Element) -> Bool
