@@ -64,7 +64,7 @@ import Foundation
  
  */
 
-struct PriorityQueue<Element> {
+public struct PriorityQueue<Element> {
     
     var elements: [Element]
     let priorityFunction: (Element, Element) -> Bool
@@ -81,19 +81,19 @@ struct PriorityQueue<Element> {
       }
     }
     
-    var isEmpty: Bool {
+    public var isEmpty: Bool {
         return elements.isEmpty
     }
     
-    var count: Int {
+    public var count: Int {
         return elements.count
     }
     
-    func peek() -> Element? {
+    public func peek() -> Element? {
         return elements.first
     }
     
-    func isRoot(_ index: Int) -> Bool {
+    public func isRoot(_ index: Int) -> Bool {
         return index == 0
     }
     
@@ -131,7 +131,7 @@ struct PriorityQueue<Element> {
         elements.swapAt(firstIndex, secondIndex)
     }
     
-    mutating func enqueue(_ element: Element) {
+    public mutating func enqueue(_ element: Element) {
         elements.append(element)
         shiftUp(elementAtIndex: count - 1)
     }
@@ -145,7 +145,7 @@ struct PriorityQueue<Element> {
         shiftUp(elementAtIndex: parent)
     }
     
-    mutating func dequeue() -> Element? {
+    public mutating func dequeue() -> Element? {
         guard !isEmpty else {
             return nil
         }
