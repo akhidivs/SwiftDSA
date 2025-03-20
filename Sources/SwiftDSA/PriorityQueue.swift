@@ -69,7 +69,7 @@ public struct PriorityQueue<Element> {
     var elements: [Element]
     let priorityFunction: (Element, Element) -> Bool
     
-    init(elements: [Element] = [], priorityFunction: @escaping (Element, Element) -> Bool) {
+    public init(elements: [Element] = [], priorityFunction: @escaping (Element, Element) -> Bool) {
       self.elements = elements
       self.priorityFunction = priorityFunction
       buildHeap()
