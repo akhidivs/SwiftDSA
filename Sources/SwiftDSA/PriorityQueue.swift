@@ -64,7 +64,7 @@ import Foundation
  
  */
 
-public struct PriorityQueue<Element> {
+public class PriorityQueue<Element> {
     
     var elements: [Element]
     let priorityFunction: (Element, Element) -> Bool
@@ -75,7 +75,7 @@ public struct PriorityQueue<Element> {
       buildHeap()
     }
 
-    mutating func buildHeap() {
+    func buildHeap() {
       for index in (0 ..< count / 2).reversed() {
         shiftDown(elementAtIndex: index)
       }
@@ -124,19 +124,19 @@ public struct PriorityQueue<Element> {
         return highestPriorityIndex(of: highestPriorityIndex(of: parentIndex, and: leftChildIndex(of: parentIndex)), and: rightChildIndex(of: parentIndex))
     }
     
-    mutating func swapElement(at firstIndex: Int, with secondIndex: Int) {
+    func swapElement(at firstIndex: Int, with secondIndex: Int) {
         guard firstIndex != secondIndex else {
             return
         }
         elements.swapAt(firstIndex, secondIndex)
     }
     
-    public mutating func enqueue(_ element: Element) {
+    public func enqueue(_ element: Element) {
         elements.append(element)
         shiftUp(elementAtIndex: count - 1)
     }
     
-    mutating func shiftUp(elementAtIndex index: Int) {
+    func shiftUp(elementAtIndex index: Int) {
         let parent = parentIndex(of: index)
         guard !isRoot(index), isHigherPriority(at: index, than: parent) else {
             return
@@ -145,7 +145,7 @@ public struct PriorityQueue<Element> {
         shiftUp(elementAtIndex: parent)
     }
     
-    public mutating func dequeue() -> Element? {
+    public func dequeue() -> Element? {
         guard !isEmpty else {
             return nil
         }
@@ -157,7 +157,7 @@ public struct PriorityQueue<Element> {
         return element
     }
     
-    mutating func shiftDown(elementAtIndex index: Int) {
+    func shiftDown(elementAtIndex index: Int) {
         let childIndex = highestPriorityIndex(for: index)
         if index == childIndex { return }
         swapElement(at: index, with: childIndex)
