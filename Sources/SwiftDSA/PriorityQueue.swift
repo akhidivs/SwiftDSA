@@ -64,7 +64,7 @@ import Foundation
  
  */
 
-struct Heap<Element> {
+struct PriorityQueue<Element> {
     
     var elements: [Element]
     let priorityFunction: (Element, Element) -> Bool
