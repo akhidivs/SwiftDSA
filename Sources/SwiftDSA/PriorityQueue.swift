@@ -62,6 +62,14 @@ import Foundation
  Event-driven simulation such as customers waiting in a queue.
  Finding Kth largest/smallest element.
  
+ Popular Standard Problems Solved using Priority Queue (or Heap)
+ --------------------------------------------------------------
+ Merge k sorted arrays
+ K Smallest (or Largest) Elements in Unsorted Array
+ K Most Frequent Elements in an Array
+ Median from Running Data Stream
+ Efficiently sort a nearly sorted (or K sorted) array
+ 
  */
 
 public final class PriorityQueue<Element> {

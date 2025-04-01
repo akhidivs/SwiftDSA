@@ -147,4 +147,119 @@ Application of BFS:
      - Stepping Number
      - Maximum product of two non- intersecting paths in a tree
  
+ 
+ Some must do Problems:
+ - Find length of the largest region in Boolean Matrix
+ - Count number of trees in a forest
+ - A Peterson Graph Problem
+ - Clone an Undirected Graph
+ - Graph Coloring (Introduction and Applications)
+ - Traveling Salesman Problem (TSP) Implementation
+ - Vertex Cover Problem | Set 1 (Introduction and Approximate Algorithm)
+ - K Centers Problem | Set 1 (Greedy Approximate Algorithm)
+ - Erdos Renyl Model (for generating Random Graphs)
+ - Chinese Postman or Route Inspection | Set 1 (introduction)
+ - Hierholzer’s Algorithm for directed graph
+ - Check whether a given graph is Bipartite or not
+ - Snake and Ladder Problem
+ - Boggle (Find all possible words in a board of characters)
+ - Hopcroft Karp Algorithm for Maximum Matching-Introduction
+ - Minimum Time to rot all oranges
+ - Construct a graph from given degrees of all vertices
+ - Determine whether a universal sink exists in a directed graph
+ - Number of sink nodes in a graph
+ - Two Clique Problem (Check if Graph can be divided in two Cliques)
+ 
 */
+
+
+enum EdgeType {
+    case directed
+    case undirected
+}
+
+struct Vertex<T> {
+    let data: T
+    let index: Int
+}
+
+struct Edge<T> {
+    let source: Vertex<T>
+    let destination: Vertex<T>
+}
+
+extension Vertex: Hashable where T: Hashable {}
+extension Vertex: Equatable where T: Equatable {}
+
+extension Vertex: CustomStringConvertible {
+    
+    var description: String {
+        return "\(index):\(data)"
+    }
+}
+
+protocol Graphable {
+    
+    associatedtype Element
+    func createVertex(data: Element) -> Vertex<Element>
+    func addDirectedEdge(from source: Vertex<Element>, to destination: Vertex<Element>)
+    func addUndirectedEdge(between source: Vertex<Element>, to destination: Vertex<Element>)
+    func add(_ edge: EdgeType, from source: Vertex<Element>, to destination: Vertex<Element>)
+    func edges(from source: Vertex<Element>) -> [Edge<Element>]
+}
+
+class Graph<T: Hashable>: Graphable {
+    
+    private var adjacents: [Vertex<T>: [Edge<T>]] = [:]
+    
+    init() {}
+    
+    func createVertex(data: T) -> Vertex<T> {
+        let vertex = Vertex(data: data, index: adjacents.count)
+        adjacents[vertex] = []
+        return vertex
+    }
+    
+    func addDirectedEdge(from source: Vertex<T>, to destination: Vertex<T>) {
+        let edge = Edge(source: source, destination: destination)
+        adjacents[source]?.append(edge)
+    }
+    
+    func addUndirectedEdge(between source: Vertex<T>, to destination: Vertex<T>) {
+        addDirectedEdge(from: source, to: destination)
+        addDirectedEdge(from: destination, to: source)
+    }
+    
+    func add(_ edge: EdgeType, from source: Vertex<T>, to destination: Vertex<T>) {
+        switch edge {
+        case .directed:
+            addDirectedEdge(from: source, to: destination)
+        case .undirected:
+            addUndirectedEdge(between: source, to: destination)
+        }
+    }
+    
+    func edges(from source: Vertex<T>) -> [Edge<T>] {
+        return adjacents[source] ?? []
+    }
+}
+
+extension Graph: CustomStringConvertible {
+    
+    var description: String {
+        
+        var result = ""
+        for (vertex, edges) in adjacents {
+            var edgeString = ""
+            for (index, edge) in edges.enumerated() {
+                if index != edges.count - 1 {
+                    edgeString.append("\(edge.destination),")
+                } else {
+                    edgeString.append("\(edge.destination)")
+                }
+            }
+            result.append("\(vertex) --> [ \(edgeString) ]\n")
+        }
+        return result
+    }
+}

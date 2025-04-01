@@ -78,6 +78,74 @@ import Foundation
  ***** BINARY SEARCH TREE *****
  A binary search tree is a special kind of binary tree ( a tree in which each node has at most two children) that performs insertion and deletion such that tree is always sorted.
  
+ Basic Operations on BST:
+ ------------------------
+ - Insertion in BST
+ - Searching in BST
+ - Deletion in BST
+ - BST Traversals
+ - Minimum in BST
+ - Maximum in BST
+ - Floor in BST
+ - Ceil in BST
+ - Inorder Successor in BST
+ - Inorder Predecessor in BST
+ - Handling duplicates in BST
+ 
+ 
+ Easy Standard Problems on BST:
+ ------------------------------
+ Second largest in BST
+ Sum of k smallest in BST
+ BST keys in given Range
+ BST to Balanced BST
+ Check for BST
+ Binary Tree to BST
+ Check if array is Inorder of BST
+ Sorted Array to Balanced BST
+ Check Same BSTs without constructing
+ BST to Min Heap
+ Add all greater values in a BST
+ Check if two BSTs have same elements
+ 
+ Medium Standard Problems on BST:
+ --------------------------------
+ BST from Preorder
+ Sorted Linked List to Balanced BST
+ Transform a BST to greater sum tree
+ BST to a Tree with sum of all smaller keys
+ Construct BST from Level Order
+ Check if an array can represent Level Order of BST
+ Max Sum with No Two Adjacent in BST
+ LCA in a BST
+ Distance between two nodes of a BST
+ k-th Smallest in BST
+ Largest BST in a Binary Tree | Set 2
+ Remove all leaves from BST
+ 2 sum in BST
+ Max between two nodes of BST
+ Largest BST Subtree
+ 2 Sum in a Balanced BST
+ Two nodes of a BST are swapped, correct it
+ Leaf nodes from Preorder of a BST
+ 
+ Hard Standard Problems on BST:
+ -------------------------------
+ Construct all possible BSTs for keys 1 to N
+ In-place Convert BST into a Min-Heap
+ Check given array of size n can represent BST of n levels or not
+ Merge two BSTs with limited extra space
+ K’th Largest Element in BST when modification to BST is not allowed
+ Check if given sorted sub-sequence exists in binary search tree
+ Maximum Unique Element in every subarray of size K
+ Count pairs from two BSTs whose sum is equal to a given value x
+ Find if there is a triplet in a Balanced BST that adds to zero
+ Replace every element with the least greater element on its right
+ Leaf nodes from Preorder of a Binary Search Tree
+ Minimum Possible value of |ai + aj – k| for given array and k.
+ Special two digit numbers in a Binary Search Tree
+ Merge Two Balanced Binary Search Trees
+ 
  
  */
 
