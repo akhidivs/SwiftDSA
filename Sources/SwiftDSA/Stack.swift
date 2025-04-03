@@ -156,3 +156,19 @@ public final class Stack<T: Equatable> {
   }
   
 }
+
+extension Stack: CustomStringConvertible {
+    
+    public var description: String {
+
+        var current = top
+        var result = ""
+        let topDivider = "---Stack---\n"
+        let bottomDivider = "\n-----------\n"
+        
+        while current != nil {
+            result += "\(String(describing: current?.data))\n"
+        }
+        return topDivider + result + bottomDivider
+    }
+}

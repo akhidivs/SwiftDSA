@@ -178,6 +178,11 @@ enum EdgeType {
     case undirected
 }
 
+enum Visit<Element: Hashable> {
+    case source
+    case edge(Edge<Element>)
+}
+
 struct Vertex<T> {
     let data: T
     let index: Int
@@ -200,7 +205,7 @@ extension Vertex: CustomStringConvertible {
 
 protocol Graphable {
     
-    associatedtype Element
+    associatedtype Element: Hashable
     func createVertex(data: Element) -> Vertex<Element>
     func addDirectedEdge(from source: Vertex<Element>, to destination: Vertex<Element>)
     func addUndirectedEdge(between source: Vertex<Element>, to destination: Vertex<Element>)
@@ -262,4 +267,71 @@ extension Graph: CustomStringConvertible {
         }
         return result
     }
+}
+
+extension Graphable {
+    
+    public func breadthFirstSearch(from source: Vertex<Element>, to destination: Vertex<Element>) -> [Edge<Element>]? {
+        
+        var queue = Queue<Vertex<Element>>()
+        queue.enque(source)
+        var visits: [Vertex<Element>: Visit<Element>] = [source: .source]
+        
+        while let visitedVertex = queue.deque() {
+            if visitedVertex == destination {
+                var vertex = destination
+                var route: [Edge<Element>] = []
+                
+                while let visit = visits[vertex],
+                        case .edge(let edge) = visit {
+                    route = route + [edge]
+                    vertex = edge.source
+                }
+                return route
+            }
+            
+            let neighbourEdges = edges(from: visitedVertex)
+            for edge in neighbourEdges {
+                if visits[edge.destination] == nil {
+                    visits[edge.destination] = .edge(edge)
+                    queue.enque(edge.destination)
+                }
+            }
+        }
+        return nil
+    }
+    
+    public func depthFirstSearch(from source: Vertex<Element>, to destination: Vertex<Element>) -> Stack<Vertex<Element>>? {
+        
+        var visited = Set<Vertex<Element>>()
+        var stack = Stack<Vertex<Element>>()
+        
+        stack.push(source)
+        visited.insert(source)
+        
+        outer: while let vertex = stack.peek(), vertex != destination {
+            
+            let neighbors = edges(from: vertex)
+            guard neighbors.count > 0 else {
+                print("backtrack from \(vertex)")
+                let _ = stack.pop()
+                continue
+            }
+          
+            for edge in neighbors {
+                if !visited.contains(edge.destination) {
+                    visited.insert(edge.destination)
+                    stack.push(edge.destination)
+                    print(stack.description)
+                    continue outer
+                }
+            }
+          
+            print("backtrack from \(vertex)") // 4
+            let _ = stack.pop()
+        }
+
+        return stack
+    }
+    
 }
