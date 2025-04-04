@@ -149,7 +149,7 @@ import Foundation
  
  */
 
-public final class BinaryTreeNode<T: Comparable> {
+public final class BinaryTreeNode<T: Hashable> {
     
     public var value: T
     public var leftChild: BinaryTreeNode<T>?
