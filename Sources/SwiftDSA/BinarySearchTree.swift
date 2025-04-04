@@ -149,6 +149,23 @@ import Foundation
  
  */
 
+public final class BinaryTreeNode<T: Comparable> {
+    
+    public var value: T
+    public var leftChild: BinaryTreeNode<T>?
+    public var rightChild: BinaryTreeNode<T>?
+    
+    public var parent: BinaryTreeNode<T>?
+    
+    public init(value: T,
+                leftChild: BinaryTreeNode<T>? = nil,
+                rightChild: BinaryTreeNode<T>? = nil) {
+        self.value = value
+        self.leftChild = leftChild
+        self.rightChild = rightChild
+    }
+}
+
 public final class BinarySearchTree<T: Comparable> {
     
     public var value: T
