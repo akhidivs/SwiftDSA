@@ -113,6 +113,13 @@ public class MaxHeap<T: Comparable> {
     
     public var heapArray: [T] = []
     
+    public init(elements: [T]) {
+        
+        for element in elements {
+            insert(element)
+        }
+    }
+    
     // insert a new element into the heap O(n)
     func insert(_ element: T) {
         heapArray.append(element)
