@@ -121,7 +121,7 @@ public class MaxHeap<T: Comparable> {
     }
     
     // insert a new element into the heap O(n)
-    func insert(_ element: T) {
+    public func insert(_ element: T) {
         heapArray.append(element)
         
         var currentIndex = heapArray.count - 1
@@ -133,7 +133,7 @@ public class MaxHeap<T: Comparable> {
     }
     
     // remove and return the top element of the heap O(n)
-    func delete() -> T? {
+    public func delete() -> T? {
         
         guard !heapArray.isEmpty else {
             return nil
