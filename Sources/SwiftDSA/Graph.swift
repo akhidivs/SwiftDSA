@@ -93,6 +93,36 @@ import Foundation
  - Model-checking in formal verification
  
  
+ Eulerian Path:
+ -------------
+ 
+ The path of edges that visits all the edges in a graph exactly once.
+ 
+                1----0----3
+                |   /     |
+                |  /      |
+                | /       |
+                 2        4
+ 
+ Condition:
+ - Number of Nodes with odd degree (odd number of edges) should be 2
+ 
+ Eulerian Circuit:
+ ----------------
+ 
+ A Eulerian path that starts and end on the same node.
+ 
+             1----0----3
+             |   / \   |
+             |  /   \  |
+             | /     \ |
+              2       4
+ 
+ Condition:
+ - Number of nodes with odd degree should be 0
+ - connected components
+ 
+ 
  
  Graph Traversal:
  ----------------

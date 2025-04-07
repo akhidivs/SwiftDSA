@@ -109,9 +109,9 @@ import Foundation
  */
 
 
-class MaxHeap<T: Comparable> {
+public class MaxHeap<T: Comparable> {
     
-    var heapArray: [T] = []
+    public var heapArray: [T] = []
     
     // insert a new element into the heap O(n)
     func insert(_ element: T) {
